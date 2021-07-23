@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://zkiypfntzazede:37692e8c5b4877ce78d280681c128265613d3963ce3dada0bbe1f6d54dcc393f@ec2-35-170-85-206.compute-1.amazonaws.com:5432/d5tu9akvbgdke9"
+}
+
+model todos {
+  id           Int      @id @default(autoincrement())
+  title        String
+  is_completed Boolean  @default(false)
+  is_public    Boolean  @default(false)
+  created_at   DateTime @default(now()) @db.Timestamp(6)
+  user_id      String
+  users        users    @relation(fields: [user_id], references: [id])
+}
+
+model users {
+  id         String    @id
+  name       String
+  created_at DateTime  @default(now()) @db.Timestamptz(6)
+  last_seen  DateTime? @db.Timestamptz(6)
+  todos      todos[]
+}

@@ -13,8 +13,10 @@
     "tsc": "tsc"
   },
   "dependencies": {
+    "@prisma/client": "^2.27.0",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "prisma": "^2.27.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
