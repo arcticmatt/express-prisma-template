@@ -1,10 +1,11 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "darwin", "debian-openssl-1.1.x"]
 }
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://zkiypfntzazede:37692e8c5b4877ce78d280681c128265613d3963ce3dada0bbe1f6d54dcc393f@ec2-35-170-85-206.compute-1.amazonaws.com:5432/d5tu9akvbgdke9"
+  url      = env("DATABASE_URL")
 }
 
 model todos {

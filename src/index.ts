@@ -1,21 +1,13 @@
-import { PrismaClient } from "@prisma/client";
-import express from "express";
+import getApp from "src/getApp";
 
 const main = async () => {
-  const app = express();
+  const app = getApp();
 
   const port = Number(process.env.SERVER_PORT);
   const host = process.env.SERVER_HOST as string;
 
-  app.get("/", async (req, res) => {
-    const prisma = new PrismaClient();
-    const data = await prisma.todos.findMany();
-    console.log("data", data);
-
-    res.send(`Hello World! ${JSON.stringify(data)}`);
-  });
-
   app.listen(port, host, () => {
+    // eslint-disable-next-line no-console
     console.log(`Example app listening at http://${host}:${port}`);
   });
 };

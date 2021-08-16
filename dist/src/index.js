@@ -39,17 +39,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = __importDefault(require("express"));
+var getApp_1 = __importDefault(require("src/getApp"));
 var main = function () { return __awaiter(void 0, void 0, void 0, function () {
     var app, port, host;
     return __generator(this, function (_a) {
-        app = express_1.default();
-        port = 4000;
-        host = 'localhost';
-        app.get('/', function (req, res) {
-            res.send('Hello World!');
-        });
+        app = getApp_1.default();
+        port = Number(process.env.SERVER_PORT);
+        host = process.env.SERVER_HOST;
         app.listen(port, host, function () {
+            // eslint-disable-next-line no-console
             console.log("Example app listening at http://" + host + ":" + port);
         });
         return [2 /*return*/];
